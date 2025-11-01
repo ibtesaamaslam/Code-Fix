@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Fix - AI Code Analysis & Automated Fixing</title>
+    <meta name="description"
+        content="Professional code analysis tool with intelligent issue detection and automated fixing capabilities">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-shield-alt shield-icon"></i>
+                <h1>Code Fix</h1>
+            </div>
+            <p class="subtitle">Intelligent code analysis and automated fixing</p>
+        </header>
+
+        <!-- Main Container -->
+        <main class="container">
+            <!-- Success Message -->
+            <div id="successMessage" class="success-message" style="display: none;">
+                <div class="card success-card">
+                    <div class="success-content">
+                        <i class="fas fa-check-circle success-icon"></i>
+                        <div class="success-text">
+                            <h2>🎉 Excellent Work!</h2>
+                            <p>Your code is correct and follows best practices. No issues detected!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Input Code</h2>
+                        <select id="languageSelect" class="language-select">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="typescript">TypeScript</option>
+                            <option value="java">Java</option>
+                            <option value="sql">SQL</option>
+                        </select>
+                    </div>
+                    <div class="card-body">
+                        <textarea id="codeInput" class="code-input" placeholder="Write your code here..."></textarea>
+                        <button id="analyzeBtn" class="analyze-btn">
+                            <i class="fas fa-bolt"></i>
+                            Analyze & Fix Code
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="results" class="results-section" style="display: none;">
+                <!-- Summary -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Analysis Summary</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="summary-grid">
+                            <div class="summary-item total">
+                                <div class="summary-number" id="totalIssues">0</div>
+                                <div class="summary-label">Total Issues</div>
+                            </div>
+                            <div class="summary-item critical">
+                                <div class="summary-number" id="criticalIssues">0</div>
+                                <div class="summary-label">Critical</div>
+                            </div>
+                            <div class="summary-item high">
+                                <div class="summary-number" id="highIssues">0</div>
+                                <div class="summary-label">High</div>
+                            </div>
+                            <div class="summary-item medium">
+                                <div class="summary-number" id="mediumIssues">0</div>
+                                <div class="summary-label">Medium</div>
+                            </div>
+                            <div class="summary-item low">
+                                <div class="summary-number" id="lowIssues">0</div>
+                                <div class="summary-label">Low</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fixed Code -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Fixed Code</h2>
+                        <button id="copyBtn" class="copy-btn">
+                            <i class="fas fa-copy"></i>
+                            Copy Code
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <pre id="fixedCode" class="code-output"></pre>
+                    </div>
+                </div>
+
+                <!-- Issues Found -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h2>Issues Found</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="issuesList" class="issues-list"></div>
+                    </div>
+                </div>
+
+                <!-- Fixes Applied -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-check-circle"></i>
+                        <h2>Fixes Applied</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="fixesList" class="fixes-list"></div>
+                    </div>
+                </div>
+
+                <!-- Improvement Suggestions -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <h2>Improvement Suggestions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div id="suggestionsList" class="suggestions-list"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toast -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

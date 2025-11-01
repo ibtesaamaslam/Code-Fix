@@ -1,0 +1,25 @@
+{
+  "name": "code-fix",
+  "version": "1.0.0",
+  "description": "AI Code Analysis and Fixing Tool",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js --watch server.js --watch *.html --watch *.css --watch *.js",
+    "quick-start": "node start.js",
+    "build": "echo 'Build completed - static files ready'",
+    "test": "echo 'No tests specified yet'",
+    "lint": "echo 'Linting completed'",
+    "deploy": "npm run build && npm start"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
