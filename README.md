@@ -1,397 +1,473 @@
-# Code Fix
+<div align="center">
 
-**Intelligent code analysis and automated fixing tool with AI enhancement**
+<img src="https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+<img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
+<img src="https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white"/>
+<img src="https://img.shields.io/badge/OpenAI-LLM%20Enhanced-412991?style=for-the-badge&logo=openai&logoColor=white"/>
+<img src="https://img.shields.io/badge/Docker-Container%20Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
+<img src="https://img.shields.io/badge/License-MIT-00C853?style=for-the-badge"/>
 
-A professional, full-stack code analysis application that detects and fixes issues in your code across multiple programming languages. Features real-time analysis, LLM enhancement, Supabase backend integration, and Docker deployment.
+<br/><br/>
 
-![Code Fix](https://img.shields.io/badge/Code-Fix-8b5cf6?style=for-the-badge&logo=code&logoColor=white)
-![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
+# ⚡ Code Fix
+### *Intelligent Code Analysis & Automated Fixing Tool*
+
+**A full-stack, AI-enhanced code analysis platform that detects and automatically fixes issues across 5 programming languages using 26+ detection rules — with real-time results, Supabase backend history, LLM-powered insights, and Docker deployment.**
+
+<br/>
+
+[![GitHub Stars](https://img.shields.io/github/stars/ibtesaamaslam/Code-Fix?style=social)](https://github.com/ibtesaamaslam/Code-Fix/stargazers)
+&nbsp;
+[![GitHub Forks](https://img.shields.io/github/forks/ibtesaamaslam/Code-Fix?style=social)](https://github.com/ibtesaamaslam/Code-Fix/network/members)
+&nbsp;
+[![GitHub Issues](https://img.shields.io/github/issues/ibtesaamaslam/Code-Fix)](https://github.com/ibtesaamaslam/Code-Fix/issues)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Tech Stack](#-tech-stack)
+- [Features](#-features)
+- [26+ Detection Rules](#-26-detection-rules)
+- [API Endpoints](#-api-endpoints)
+- [Database Schema](#-database-schema-supabase)
+- [Analysis Engine](#-analysis-engine)
+- [Project Structure](#-project-structure)
+- [Quick Start](#-quick-start)
+- [Environment Variables](#-environment-variables)
+- [Deployment](#-deployment)
+- [Browser Compatibility](#-browser-compatibility)
+- [Use Cases](#-use-cases)
+- [Roadmap](#-roadmap)
+- [Contributing](#-contributing)
+- [Author](#-author)
+- [License](#-license)
+
+---
+
+## 🔍 Overview
+
+**Code Fix** is a professional, full-stack code analysis application that detects and automatically fixes issues in your code across multiple programming languages. It combines a real-time client-side analysis engine with a Node.js + Express backend, Supabase database persistence, and optional LLM enhancement via OpenAI GPT-3.5/4 for advanced architectural insights beyond what regex-based detection can provide.
+
+The system analyses your actual code input — not pre-trained responses — using 26+ language-specific detection rules categorised by severity (Critical → High → Medium → Low) and type (Security · Performance · Quality · Syntax · Logic). Every detected issue is accompanied by an automated fix, a clear explanation of what changed and why, and a before/after comparison.
+
+> 💡 **Architecture note:** The analysis engine runs entirely client-side for speed (sub-2-second results). The Express backend handles persistence, user history, LLM enhancement, and rate limiting. When the LLM is unavailable, the system falls back gracefully to local pattern-based analysis with zero degradation to the core experience.
+
+---
+
+## 🧰 Tech Stack
+
+### Frontend
+
+| Technology | Purpose |
+|-----------|---------|
+| HTML5 + CSS3 | Structure and neon purple UI with animations |
+| Vanilla JavaScript (ES6+) | `CodeAnalyzer` class — 26+ rule engine, real-time analysis |
+| `styles.css` | Neon purple design system with hover effects and transitions |
+| SF Mono / Monaco / System fonts | Code display and UI typography |
+
+### Backend
+
+| Technology | Version | Purpose |
+|-----------|---------|---------|
+| [Node.js](https://nodejs.org/) | 18+ | Runtime environment |
+| [Express.js](https://expressjs.com/) | Latest | REST API server — port 3002 |
+| [Supabase](https://supabase.com/) | Latest | PostgreSQL database for analysis history |
+| [OpenAI SDK](https://platform.openai.com/) | Latest | GPT-3.5/4 LLM enhancement |
+| Rate Limiting | via express-rate-limit | API abuse prevention |
+
+### DevOps & Deployment
+
+| Tool | Purpose |
+|------|---------|
+| Docker + Docker Compose | Containerised production deployment |
+| Nginx | Reverse proxy and static file serving |
+| `healthcheck.js` | Built-in health monitoring endpoint |
+| `deploy.sh` / `deploy.bat` | One-command Unix and Windows deployment |
+| `start.js` | Quick-start automation script |
+
+---
 
 ## ✨ Features
 
-### 🔍 **Real-time Code Analysis**
-- **Live Detection Engine**: Analyzes your actual code input, not pre-trained responses
-- **Multi-language Support**: JavaScript, TypeScript, Python, Java, SQL
-- **26+ Detection Rules**: Comprehensive issue identification across all categories
-- **Instant Results**: Get analysis results in under 2 seconds
+### 🔍 Real-Time Code Analysis
+- **Live detection engine** — analyses your actual code input on every run, not cached responses.
+- **Multi-language support** — JavaScript, TypeScript, Python, Java, SQL with language-specific rule sets.
+- **26+ detection rules** — comprehensive identification across all issue categories.
+- **Sub-2-second results** — efficient regex-based pattern matching with minimal memory footprint.
 
-### 🛠️ **Automated Code Fixing**
-- **Smart Fixes**: Automatically applies improvements to detected issues
-- **Before/After Comparison**: See exactly what was changed and why
-- **One-click Copy**: Copy fixed code to clipboard instantly
-- **Detailed Explanations**: Understand each fix with clear descriptions
+### 🛠️ Automated Code Fixing
+- **Smart fixes** — automatically applies targeted improvements for each detected issue.
+- **Before/after comparison** — see exactly what changed, line by line, and why.
+- **One-click copy** — copy fixed code to clipboard with visual confirmation feedback.
+- **Detailed explanations** — every fix includes a plain-English description of the improvement.
 
-### 📊 **Professional Dashboard**
-- **Severity Classification**: Critical, High, Medium, Low issue prioritization
-- **Category Grouping**: Security, Performance, Quality, Syntax organization
-- **Visual Statistics**: Color-coded metrics and progress indicators
-- **Interactive UI**: Hover effects, smooth animations, professional design
+### 📊 Professional Dashboard
+- **Severity classification** — Critical, High, Medium, Low issue prioritisation with colour coding.
+- **Category grouping** — Security, Performance, Quality, Syntax, Logic organisation.
+- **Visual statistics** — colour-coded metrics, progress indicators, and issue counts.
+- **Interactive UI** — hover effects, smooth animations, and professional neon purple design system.
 
-### 🎯 **Issue Detection Categories**
+### 🤖 LLM Enhancement (OpenAI)
+- **GPT-3.5/4 integration** — advanced architectural analysis beyond regex capabilities.
+- **Intelligent insights** — best practices, refactoring suggestions, and design pattern recommendations.
+- **Alternative API support** — configurable custom LLM endpoints.
+- **Graceful fallback** — local analysis engine activates automatically if LLM is unavailable.
 
-#### **Security Vulnerabilities**
-- SQL Injection detection in database queries
-- XSS (Cross-Site Scripting) vulnerability identification
-- Hard-coded secrets and API keys detection
-- Unprotected API endpoints and authentication issues
+### 💾 Backend Persistence (Supabase)
+- **Analysis history** — every analysis saved with full metadata to PostgreSQL via Supabase.
+- **User statistics** — track usage patterns, improvements, and analysis trends over time.
+- **History retrieval** — access and compare previous analyses via REST API.
+- **Performance metrics** — monitor analysis trends and improvement rates.
 
-#### **Performance Issues**
-- Inefficient algorithm complexity (O(n²) vs O(n log n))
-- Memory leaks and resource management problems
-- Unnecessary computations and blocking operations
-- Database query optimization opportunities
+### 🔒 Security & Performance
+- **Rate limiting** — configurable per-IP request limits via `express-rate-limit`.
+- **Input validation** — secure handling of all code input and API parameters.
+- **Error handling** — comprehensive error management with structured logging.
+- **Health monitoring** — `GET /health` endpoint for uptime monitoring and container orchestration.
 
-#### **Code Quality Problems**
-- Missing error handling and try-catch blocks
-- Poor naming conventions and code structure
-- Missing documentation and comments
-- Debug code left in production (console.log, print statements)
+---
 
-#### **Syntax Errors**
-- Missing semicolons, colons, and brackets
-- Indentation and formatting inconsistencies
-- Deprecated syntax usage (var vs let/const)
-- Type-related issues and loose equality comparisons
+## 🎯 26+ Detection Rules
 
-#### **Logical Bugs**
-- Off-by-one errors in loops and arrays
-- Missing WHERE clauses in SQL operations
-- Null pointer and undefined reference issues
-- Incorrect conditional logic and flow control
+### 🔴 Security Vulnerabilities
+| Rule | Languages | Severity |
+|------|-----------|---------|
+| SQL Injection detection | Python, JavaScript, Java, SQL | Critical |
+| XSS (Cross-Site Scripting) vulnerability | JavaScript, TypeScript | Critical |
+| Hard-coded secrets and API keys | All | Critical |
+| Unprotected API endpoints | JavaScript, TypeScript | High |
+| Authentication bypass patterns | All | Critical |
+| Dynamic SQL construction | SQL, Python, Java | High |
+
+### 🟠 Performance Issues
+| Rule | Languages | Severity |
+|------|-----------|---------|
+| O(n²) algorithm complexity | JavaScript, Python, Java | High |
+| Memory leaks and unclosed resources | JavaScript, Python, Java | High |
+| Unnecessary re-computation in loops | All | Medium |
+| Blocking I/O operations | JavaScript, TypeScript | High |
+| `SELECT *` query inefficiency | SQL | Medium |
+| Missing database query indexes | SQL | Medium |
+
+### 🟡 Code Quality Problems
+| Rule | Languages | Severity |
+|------|-----------|---------|
+| Missing error handling / try-catch | All | High |
+| `console.log` / `print` in production | JavaScript, Python | Medium |
+| Poor naming conventions | All | Low |
+| Missing docstrings / JSDoc | Python, JavaScript | Low |
+| TODO/FIXME comments (incomplete code) | All | Low |
+| Bare `except` clause | Python | Medium |
+| Line length exceeding 120 chars | All | Low |
+
+### 🔵 Syntax & Logic Errors
+| Rule | Languages | Severity |
+|------|-----------|---------|
+| Missing semicolons | JavaScript, TypeScript | Medium |
+| Missing colons in definitions | Python | High |
+| `var` vs `let`/`const` (deprecated) | JavaScript, TypeScript | Medium |
+| Loose equality `==` vs strict `===` | JavaScript, TypeScript | Medium |
+| Off-by-one errors in loops | All | High |
+| Missing `WHERE` clause in UPDATE/DELETE | SQL | Critical |
+| Null / undefined reference patterns | JavaScript, TypeScript | High |
+| Indentation inconsistencies | Python | High |
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/analyze` | Analyse code with optional LLM enhancement |
+| `GET` | `/api/history/:userId` | Get all past analyses for a user |
+| `GET` | `/api/analysis/:analysisId` | Get a specific analysis result by ID |
+| `GET` | `/api/stats/:userId` | User statistics and usage metrics |
+| `GET` | `/health` | Health check for monitoring and Docker |
+
+### `POST /api/analyze` — Request Body
+
+```json
+{
+  "code": "string — the source code to analyse",
+  "language": "javascript | typescript | python | java | sql",
+  "userId": "string — optional, for history persistence",
+  "useLLM": "boolean — enable OpenAI enhancement"
+}
+```
+
+### `POST /api/analyze` — Response Shape
+
+```json
+{
+  "issues": [
+    {
+      "id": "string",
+      "type": "security | performance | quality | syntax | logic",
+      "severity": "critical | high | medium | low",
+      "message": "string",
+      "line": "number",
+      "fix": "string — automated fix description",
+      "confidence": "number — 0 to 1"
+    }
+  ],
+  "fixedCode": "string — full corrected source code",
+  "summary": {
+    "critical": 0, "high": 0, "medium": 0, "low": 0
+  },
+  "llmInsights": "string — optional GPT analysis",
+  "analysisId": "string — Supabase record ID"
+}
+```
+
+---
+
+## 🗄️ Database Schema (Supabase)
+
+### `analyses` table
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `id` | uuid | Primary key |
+| `user_id` | text | User identifier |
+| `language` | text | Programming language |
+| `original_code` | text | Input code submitted |
+| `fixed_code` | text | Auto-fixed output code |
+| `issues_count` | integer | Total issues detected |
+| `critical_count` | integer | Critical severity count |
+| `high_count` | integer | High severity count |
+| `llm_used` | boolean | Whether LLM was invoked |
+| `created_at` | timestamptz | Auto-set on insert |
+
+### Setup
+
+```sql
+-- Run in Supabase SQL Editor (supabase-schema.sql)
+CREATE TABLE analyses (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id TEXT,
+  language TEXT NOT NULL,
+  original_code TEXT NOT NULL,
+  fixed_code TEXT,
+  issues_count INTEGER DEFAULT 0,
+  critical_count INTEGER DEFAULT 0,
+  high_count INTEGER DEFAULT 0,
+  llm_used BOOLEAN DEFAULT FALSE,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+```
+
+---
+
+## 🔬 Analysis Engine
+
+The core `CodeAnalyzer` class in `script.js` handles all client-side detection:
+
+```javascript
+class CodeAnalyzer {
+  analyzeCode(code, language) {
+    const issues = [];
+
+    // 1. Run language-specific rule set
+    const rules = this.getRulesForLanguage(language);
+
+    // 2. Apply regex pattern matching per rule
+    rules.forEach(rule => {
+      const matches = this.applyRule(code, rule);
+      if (matches.length > 0) {
+        issues.push(...matches.map(m => ({
+          ...rule,
+          line: m.line,
+          confidence: m.confidence
+        })));
+      }
+    });
+
+    // 3. Sort by severity weight
+    issues.sort((a, b) => severityWeight[b.severity] - severityWeight[a.severity]);
+
+    // 4. Generate automated fixes
+    const fixedCode = this.generateFixes(code, issues, language);
+
+    return { issues, fixedCode, summary: this.summarize(issues) };
+  }
+}
+```
+
+### Language-Specific Detection
+
+**JavaScript / TypeScript:** Missing semicolons, `console.log`, loose equality (`==`), `var` usage, unhandled promise rejections, XSS patterns, missing try-catch.
+
+**Python:** Missing colons in `def`/`class`, bare `except`, missing docstrings, `print` statements, string formatting SQL injection, PEP 8 line length.
+
+**SQL:** `SELECT *`, missing `WHERE` in `UPDATE`/`DELETE`, dynamic string concatenation, query efficiency patterns.
+
+**Java:** Missing exception handling, null pointer patterns, coding convention violations.
+
+**Generic (all languages):** TODO/FIXME comments, line length, code complexity indicators.
+
+---
+
+## 📂 Project Structure
+
+```
+Code-Fix/
+│
+├── index.html                   # Clean HTML entry point — empty code input
+├── styles.css                   # Neon purple design system with animations
+├── script.js                    # CodeAnalyzer class — 26+ detection rules
+├── server.js                    # Express API server — port 3002
+├── start.js                     # Quick-start automation (npm run quick-start)
+├── healthcheck.js               # Health monitoring for Docker/uptime checks
+│
+├── package.json                 # Dependencies and npm scripts
+├── .env                         # Active environment configuration
+├── .env.example                 # Environment variable template
+│
+├── Dockerfile                   # Production Docker container
+├── docker-compose.yml           # Full-stack orchestration
+├── deploy.sh                    # Unix one-command deployment
+├── deploy.bat                   # Windows one-command deployment
+│
+├── standalone.html              # Zero-dependency standalone version
+├── supabase-schema.sql          # Database table creation script
+│
+├── README.md                    # This file
+├── QUICK_START.md               # Condensed getting-started guide
+├── PROJECT_COMPLETION_REPORT.md # Detailed feature analysis
+├── PROJECT_STATUS.md            # Current build status
+└── TROUBLESHOOTING.md           # Common issues and solutions
+```
+
+---
 
 ## 🚀 Quick Start
 
-### **⚡ Super Quick Start (Recommended)**
+### ⚡ One Command (Recommended)
+
 ```bash
-# One command to install and start everything!
 npm run quick-start
+# Installs dependencies + starts server at http://localhost:3002
 ```
-This automatically installs dependencies and starts the development server at http://localhost:3002
 
-### **📋 Manual Setup Options**
+### Option A — Development Mode (Hot Reload)
 
-#### **Option 1: Development Mode (Hot Reload)**
 ```bash
-# Install dependencies
 npm install
-
-# Start development server with auto-reload
 npm run dev
-
-# Access at http://localhost:3002
+# → http://localhost:3002 with auto-reload on file changes
 ```
 
-#### **Option 2: Production Mode**
+### Option B — Production Mode
+
 ```bash
-# Install dependencies
 npm install
-
-# Start production server
 npm start
-
-# Access at http://localhost:3002
+# → http://localhost:3002
 ```
 
-#### **Option 3: Docker (Container Deployment)**
+### Option C — Docker
+
 ```bash
-# Start with Docker Compose
 docker-compose up --build
-
-# Access at http://localhost:3002
+# → http://localhost:3002 fully containerised
 ```
 
-#### **Option 2: Node.js**
+### Option D — Platform Scripts
+
 ```bash
-# Clone and install
-git clone <repository-url>
-cd code-fix
-npm install
-
-# Configure environment
-cp .env.example .env
-# Edit .env with your configuration
-
-# Start server
-npm start
-
-# Access at http://localhost:3000
-```
-
-#### **Option 3: Quick Start Scripts**
-```bash
-# Linux/Mac
+# Linux / macOS
 ./start.sh
 
 # Windows
 start.bat
 ```
 
-### **Configuration Required**
-Edit `.env` file with your API keys:
-- **Supabase**: Database integration
-- **OpenAI/LLM API**: Enhanced AI analysis
-- **Other settings**: Rate limiting, security
+### Option E — Zero Node.js (Instant Test)
 
-## 💻 Usage Guide
+Open `standalone.html` directly in any browser for basic functionality without any installation.
 
-### **Step-by-Step Workflow**
+---
 
-1. **Input Your Code**
-   - Paste or type code in the input textarea
-   - The placeholder "write code you want to fix" will guide you
-   - Code area auto-resizes as you type
+## 🔑 Environment Variables
 
-2. **Select Language**
-   - Choose from: Python, JavaScript, TypeScript, Java, SQL
-   - Language-specific analysis rules will be applied
-   - Different detection patterns for each language
+Create `.env` from the template:
 
-3. **Run Analysis**
-   - Click the "⚡ Analyze & Fix Code" button
-   - Real-time processing takes 1-2 seconds
-   - Loading animation shows progress
-
-4. **Review Results**
-   - **Analysis Summary**: See total issues by severity level
-   - **Issues Detected**: Detailed list with descriptions and line numbers
-   - **Fixed Code**: Improved version with applied fixes
-   - **Fixes Applied**: List of all improvements made
-
-5. **Copy Fixed Code**
-   - Use "Copy Fixed Code" button for instant clipboard copy
-   - Visual feedback confirms successful copy operation
-   - Paste improved code into your project
-
-### **Keyboard Shortcuts**
-- `Ctrl/Cmd + Enter`: Analyze code
-- `Ctrl/Cmd + C`: Copy fixed code (when results visible)
-
-## 🏗️ Project Structure
-
-```
-
-code-fix/
-├── 📄 index.html                    # Clean HTML with empty input
-├── 🎨 styles.css                    # Neon purple design with animations
-├── ⚡ script.js                     # Advanced analysis engine (26+ rules)
-├── 🚀 server.js                     # Express server with dev messages
-├── 📦 package.json                  # Updated with dev scripts
-├── 🔧 start.js                      # Quick start automation
-├── 🐳 Dockerfile                    # Production container
-├── 🐳 docker-compose.yml            # Orchestration
-├── ⚙️ .env                          # Environment config
-├── ⚙️ .env.example                  # Environment template
-├── 🔧 healthcheck.js                # Health monitoring
-├── 📚 README.md                     # Comprehensive docs
-├── 📊 PROJECT_COMPLETION_REPORT.md  # Detailed analysis
-├── 📋 QUICK_START.md                # Quick start guide
-├── 📊 PROJECT_STATUS.md             # Current status
-├── 🚀 deploy.sh                     # Unix deployment
-├── 🚀 deploy.bat                    # Windows deployment
-└── 📁 node_modules/                 # Dependencies
-
-
-```
-
-### **Full-Stack Architecture**
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript with neon purple design
-- **Backend**: Node.js + Express.js with comprehensive API
-- **Database**: Supabase (PostgreSQL) for analysis history and statistics
-- **AI Enhancement**: OpenAI/LLM integration for advanced analysis
-- **Deployment**: Docker + Docker Compose + Nginx ready
-
-## 🔧 Backend Features
-
-### **API Endpoints**
-- `POST /api/analyze` - Analyze code with LLM enhancement
-- `GET /api/history/:userId` - Get analysis history
-- `GET /api/analysis/:analysisId` - Get specific analysis
-- `GET /api/stats/:userId` - User statistics and metrics
-- `GET /health` - Health check endpoint
-
-### **Database Integration (Supabase)**
-- **Analysis Storage**: Save all code analyses with metadata
-- **User Statistics**: Track usage patterns and improvements
-- **History Tracking**: Access previous analyses and results
-- **Performance Metrics**: Monitor analysis trends over time
-
-### **LLM Enhancement**
-- **OpenAI Integration**: GPT-3.5/4 for advanced code analysis
-- **Alternative APIs**: Support for custom LLM endpoints
-- **Intelligent Insights**: Architectural improvements and best practices
-- **Fallback System**: Local analysis if LLM unavailable
-
-### **Security & Performance**
-- **Rate Limiting**: Prevent API abuse with configurable limits
-- **Input Validation**: Secure handling of code input and parameters
-- **Error Handling**: Comprehensive error management and logging
-- **Health Monitoring**: Built-in health checks and monitoring
-
-## 🔧 Technical Details
-
-### **Analysis Engine**
-
-The core `CodeAnalyzer` class provides intelligent code analysis:
-
-```javascript
-class CodeAnalyzer {
-    analyzeCode(code, language) {
-        // Real-time pattern matching
-        // Language-specific rule application
-        // Issue severity classification
-        // Automated fix generation
-    }
-}
-```
-
-### **Detection Algorithms**
-
-#### **JavaScript/TypeScript Analysis**
-- Missing semicolon detection with regex patterns
-- Console.log statement identification for production cleanup
-- Loose equality (==) vs strict equality (===) checking
-- Variable declaration analysis (var vs let/const)
-- Error handling validation around risky operations
-
-#### **Python Analysis**
-- Missing colon detection in function/class definitions
-- Print statement identification for logging recommendations
-- Bare except clause detection for better error handling
-- Docstring presence validation for documentation
-- String formatting analysis for SQL injection prevention
-
-#### **SQL Analysis**
-- SELECT * query detection for performance optimization
-- Missing WHERE clause identification in UPDATE/DELETE
-- Dynamic SQL construction analysis for injection prevention
-- Query efficiency pattern recognition
-
-#### **Generic Analysis**
-- TODO/FIXME comment detection for incomplete code
-- Line length analysis for readability standards
-- Code complexity measurement and optimization suggestions
-
-### **Fix Generation System**
-
-Automated fixes are applied based on detected issues:
-
-```javascript
-generateFixes() {
-    // Pattern-based code transformation
-    // Security vulnerability patching
-    // Performance optimization application
-    // Documentation generation
-}
-```
-
-## 🎨 Design Philosophy
-
-### **Professional UI/UX**
-- **Clean Interface**: Minimal, distraction-free design
-- **Intuitive Workflow**: Logical step-by-step process
-- **Visual Feedback**: Clear indicators for all user actions
-- **Responsive Design**: Works perfectly on desktop and mobile
-
-### **Color-Coded System**
-- 🔴 **Critical Issues**: Red - Security vulnerabilities, syntax errors
-- 🟠 **High Issues**: Orange - Logic bugs, missing error handling
-- 🟡 **Medium Issues**: Yellow - Code quality, documentation gaps
-- 🔵 **Low Issues**: Blue - Style improvements, minor optimizations
-
-### **Typography & Spacing**
-- **Modern Fonts**: SF Mono, Monaco for code; System fonts for UI
-- **Proper Hierarchy**: Clear heading structure and text sizing
-- **Comfortable Spacing**: Adequate padding and margins for readability
-- **Professional Shadows**: Subtle depth without overwhelming design
-
-## 🌟 Advanced Features
-
-### **Real-time Intelligence**
-- **Dynamic Analysis**: Results change based on your actual code input
-- **Context Awareness**: Understands language-specific patterns and idioms
-- **Confidence Scoring**: AI confidence levels for each detected issue
-- **Progressive Enhancement**: More sophisticated analysis as code complexity increases
-
-### **Language-Specific Intelligence**
-- **JavaScript**: ES6+ syntax awareness, async/await patterns, modern best practices
-- **Python**: PEP 8 compliance, Pythonic idioms, exception handling patterns
-- **SQL**: Database-specific optimizations, security best practices, performance tuning
-- **Java**: Object-oriented patterns, exception handling, coding conventions
-
-### **Performance Optimization**
-- **Efficient Parsing**: Fast regex-based pattern matching
-- **Minimal Memory Usage**: Lightweight analysis algorithms
-- **Instant Results**: Sub-2-second analysis for most code samples
-- **Scalable Architecture**: Handles code files of various sizes
-
-## 🔒 Security & Privacy
-
-### **Client-Side Processing**
-- **No Data Transmission**: All analysis happens in your browser
-- **Complete Privacy**: Your code never leaves your device
-- **Offline Capable**: Works without internet connection
-- **No Tracking**: Zero analytics or user data collection
-
-### **Security Best Practices**
-- **Input Sanitization**: Safe handling of all user input
-- **XSS Prevention**: Proper output encoding and validation
-- **CSP Ready**: Content Security Policy compatible
-- **HTTPS Compatible**: Secure deployment ready
-
-## 📱 Browser Compatibility
-
-### **Supported Browsers**
-- ✅ **Chrome 60+** (Recommended)
-- ✅ **Firefox 55+**
-- ✅ **Safari 12+**
-- ✅ **Edge 79+**
-- ✅ **Opera 47+**
-
-### **Mobile Support**
-- **iOS Safari**: Full functionality on iPhone/iPad
-- **Android Chrome**: Complete feature support
-- **Responsive Design**: Adapts to all screen sizes
-- **Touch Optimized**: Proper button sizes and interactions
-
-## 🎯 Use Cases
-
-### **For Developers**
-- **Code Review**: Quick quality assessment before commits
-- **Learning Tool**: Understand best practices and common mistakes
-- **Debugging Aid**: Identify potential issues early in development
-- **Refactoring Helper**: Improve existing code quality systematically
-
-### **For Teams**
-- **Code Standards**: Enforce consistent coding practices
-- **Security Audits**: Identify vulnerabilities before deployment
-- **Performance Optimization**: Find and fix performance bottlenecks
-- **Documentation**: Ensure proper code documentation standards
-
-### **For Education**
-- **Teaching Tool**: Demonstrate good vs bad coding practices
-- **Student Assessment**: Evaluate code quality in assignments
-- **Best Practices**: Learn industry-standard coding conventions
-- **Language Learning**: Understand language-specific patterns
-
-## 🚀 Deployment Options
-
-### **Static Hosting**
 ```bash
-# Vercel
+cp .env.example .env
+```
+
+```env
+# Server
+PORT=3002
+NODE_ENV=development
+
+# Supabase (PostgreSQL backend)
+SUPABASE_URL=https://rprxqhxtlbdkqzxgbdvg.supabase.co
+SUPABASE_ANON_KEY=your_anon_key_here
+DATABASE_URL=postgresql://postgres:your_password@db.rprxqhxtlbdkqzxgbdvg.supabase.co:5432/postgres
+
+# OpenAI / LLM Enhancement
+OPENAI_API_KEY=your_openai_api_key_here
+LLM_MODEL=gpt-3.5-turbo    # or gpt-4
+
+# Security
+RATE_LIMIT_MAX=100          # requests per window
+RATE_LIMIT_WINDOW=900000    # 15 minutes in ms
+```
+
+| Variable | Required | Source |
+|----------|----------|--------|
+| `SUPABASE_URL` | For history | Supabase Dashboard → Settings → API |
+| `SUPABASE_ANON_KEY` | For history | Supabase Dashboard → Settings → API → anon/public |
+| `DATABASE_URL` | For direct DB | Supabase Dashboard → Settings → Database |
+| `OPENAI_API_KEY` | For LLM | [platform.openai.com](https://platform.openai.com) |
+
+> The app runs fully without any environment variables — LLM falls back to local analysis, Supabase falls back to in-memory session storage.
+
+---
+
+## 🚢 Deployment
+
+### Vercel
+
+```bash
 vercel --prod
+```
 
-# Netlify
+### Netlify
+
+```bash
 netlify deploy --prod --dir=.
+```
 
-# GitHub Pages
-# Push to gh-pages branch
+### Docker (Production)
 
-# AWS S3
+```dockerfile
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+EXPOSE 80
+```
+
+```bash
+docker-compose up --build -d
+```
+
+### AWS S3 + CloudFront
+
+```bash
 aws s3 sync . s3://your-bucket --delete
 ```
 
-### **Local Development**
+### GitHub Pages
+
+Push to the `gh-pages` branch — the static files serve directly.
+
+### Local Static Servers
+
 ```bash
 # Python
 python -m http.server 8000
@@ -403,97 +479,155 @@ npx serve .
 php -S localhost:8000
 ```
 
-### **Docker Deployment**
-```dockerfile
-FROM nginx:alpine
-COPY . /usr/share/nginx/html
-EXPOSE 80
-```
+---
+
+## 🌐 Browser Compatibility
+
+| Browser | Version | Support |
+|---------|---------|---------|
+| Chrome | 60+ | ✅ Recommended |
+| Firefox | 55+ | ✅ Full |
+| Safari | 12+ | ✅ Full (iOS included) |
+| Edge | 79+ | ✅ Full |
+| Opera | 47+ | ✅ Full |
+| Android Chrome | Latest | ✅ Full |
+| iOS Safari | Latest | ✅ Full |
+
+---
+
+## 🎯 Use Cases
+
+### For Individual Developers
+- **Pre-commit code review** — quick quality check before pushing to version control.
+- **Learning tool** — understand common mistakes and best practices per language.
+- **Debugging aid** — identify potential issues early without running the code.
+- **Refactoring helper** — improve legacy code quality systematically.
+
+### For Development Teams
+- **Code standards enforcement** — consistent quality checks across all languages.
+- **Security audits** — identify SQL injection, XSS, and hard-coded secrets before deployment.
+- **Performance optimisation** — find O(n²) algorithms and memory leaks before production.
+- **Pull request assistance** — quick pre-review analysis to catch obvious issues.
+
+### For Education
+- **Teaching tool** — demonstrate good vs bad coding practices with live examples.
+- **Student assessment** — evaluate code quality in assignments across 5 languages.
+- **Industry standards** — learn language-specific idioms and conventions interactively.
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] **Additional languages** — Go, Rust, C#, PHP, Ruby detection rule sets
+- [ ] **VS Code extension** — integrate the analysis engine directly into the editor
+- [ ] **GitHub Action** — run analysis as a CI/CD check on every pull request
+- [ ] **Batch file analysis** — upload and analyse entire code files or zip archives
+- [ ] **Team dashboard** — shared analytics across multiple users and projects
+- [ ] **Custom rules** — define and save organisation-specific detection rules
+- [ ] **PDF report export** — generate formatted code quality reports for stakeholders
+- [ ] **WebSocket live analysis** — real-time analysis as-you-type with debounce
+
+---
 
 ## 🤝 Contributing
 
-### **Development Guidelines**
-- Follow existing code style and patterns
-- Test across multiple browsers before submitting
-- Ensure accessibility compliance (WCAG 2.1 AA)
-- Maintain responsive design principles
-- Document any new features or changes
+```bash
+# 1. Fork the repository
 
-### **Adding New Language Support**
-1. Add language option to HTML select element
-2. Implement language-specific analysis in `CodeAnalyzer`
-3. Add appropriate fix generation patterns
-4. Test with various code samples
-5. Update documentation
+# 2. Clone your fork
+git clone https://github.com/YOUR-USERNAME/Code-Fix.git
+cd Code-Fix
 
-### **Reporting Issues**
-- Provide specific code samples that cause problems
-- Include browser version and operating system
-- Describe expected vs actual behavior
-- Check existing issues before creating new ones
+# 3. Install dependencies
+npm install
 
-## 📄 License
+# 4. Create a feature branch
+git checkout -b feature/add-go-language-support
 
-MIT License - Feel free to use, modify, and distribute as needed.
+# 5. Make changes and commit
+git add .
+git commit -m "feat: add Go language detection rules to CodeAnalyzer"
 
-## 🙏 Acknowledgments
-
-- **Font Awesome** for professional icons
-- **Modern CSS** techniques for responsive design
-- **Vanilla JavaScript** for maximum compatibility
-- **Open Source Community** for inspiration and best practices
-
----
-
-**Code Fix** - Making your code better, one analysis at a time. 🚀
-
-*Built with ❤️ using pure web technologies for maximum compatibility and performance.*
-## 🔧 
-**Troubleshooting**
-
-### **NPM Commands Not Working?**
-If you get "npm is not recognized", Node.js is not installed:
-
-1. **Install Node.js**: Download from [nodejs.org](https://nodejs.org/)
-2. **Run Setup Script**: `setup-windows.bat` (Windows) or `setup-linux.sh` (Linux/Mac)
-3. **Verify Installation**: `node --version` and `npm --version`
-
-### **Quick Start Without Node.js**
-For immediate testing, open `standalone.html` in your browser for basic functionality.
-
-### **Your Supabase Database**
-Your database is already configured! Just add your anon key:
-
-```env
-SUPABASE_URL=https://rprxqhxtlbdkqzxgbdvg.supabase.co
-SUPABASE_ANON_KEY=your_anon_key_here
-DATABASE_URL=postgresql://postgres:Pak469702@db.rprxqhxtlbdkqzxgbdvg.supabase.co:5432/postgres
+# 6. Push and open a Pull Request
+git push origin feature/add-go-language-support
 ```
 
-**Get your anon key**: Supabase Dashboard → Settings → API → Copy anon/public key
-
-### **Database Setup**
-1. Go to your Supabase SQL Editor
-2. Copy and paste contents of `supabase-schema.sql`
-3. Click "Run" to create tables
-
-### **Common Issues**
-- **Port in use**: Change `PORT=3001` in `.env`
-- **Dependencies fail**: Run `npm cache clean --force` then `npm install`
-- **Connection issues**: Check your Supabase anon key and network
-
-**For detailed troubleshooting, see `TROUBLESHOOTING.md`**
+**Adding a new language:**
+1. Add option to the `<select>` in `index.html`
+2. Implement rules in `CodeAnalyzer.getRulesForLanguage()`
+3. Add fix generation patterns in `generateFixes()`
+4. Test with various code samples
+5. Update this README
 
 ---
 
-## 🎯 **Summary**
+## 👤 Author
 
-**Code Fix** is now a complete, production-ready application with:
-- 🎨 **Neon purple UI** with professional animations
-- 🧠 **AI-enhanced analysis** with LLM integration  
-- 💾 **Supabase backend** (your database is ready!)
-- 🐳 **Docker deployment** with full orchestration
-- 🔒 **Enterprise security** with rate limiting
-- 📱 **Mobile-responsive** design
+<div align="center">
 
-**Your Supabase database is already connected - just add your anon key and you're ready to go!** 🚀
+**Ibtesaam Aslam**
+
+[![GitHub](https://img.shields.io/badge/GitHub-ibtesaamaslam-181717?style=for-the-badge&logo=github)](https://github.com/ibtesaamaslam)
+
+*Full-Stack Developer & AI Enthusiast*
+
+</div>
+
+---
+
+## 📜 License
+
+```
+MIT License
+
+Copyright (c) 2024 Ibtesaam Aslam
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+```
+
+| Permission | Status |
+|-----------|--------|
+| ✅ Commercial use | Allowed |
+| ✅ Modification | Allowed |
+| ✅ Distribution | Allowed |
+| ✅ Private use | Allowed |
+| ❌ Liability | No warranty provided |
+| ❌ Trademark use | Not granted |
+
+---
+
+## 🙏 Acknowledgements
+
+- **[Supabase](https://supabase.com/)** — for the open-source Firebase alternative powering the analysis history and statistics backend.
+- **[OpenAI](https://platform.openai.com/)** — for the GPT API enabling advanced LLM-powered code insights beyond pattern matching.
+- **[Express.js](https://expressjs.com/)** — for the minimal, fast Node.js web framework powering the API server.
+- **[Docker](https://www.docker.com/)** — for container-based deployment that makes production hosting consistent across environments.
+- The **open-source JavaScript community** — for Vanilla JS, modern CSS, and Node.js ecosystem tools this project is built on.
+
+---
+
+<div align="center">
+
+**⭐ If Code Fix helped you write better code, please consider starring it on GitHub!**
+
+[![Star on GitHub](https://img.shields.io/github/stars/ibtesaamaslam/Code-Fix?style=social)](https://github.com/ibtesaamaslam/Code-Fix)
+
+*Built with ❤️ by [Ibtesaam Aslam](https://github.com/ibtesaamaslam) — Making your code better, one analysis at a time.*
+
+</div>
