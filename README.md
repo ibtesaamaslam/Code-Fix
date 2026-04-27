@@ -10,7 +10,7 @@
 <img src="https://img.shields.io/badge/Docker-Container%20Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/License-MIT-00C853?style=for-the-badge"/>
 
-<br/><br/>
+<br/>
 
 # ⚡ Code Fix
 ### *Intelligent Code Analysis & Automated Fixing Tool*
